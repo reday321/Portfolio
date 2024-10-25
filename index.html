@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reday - QA Engineer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --accent-color: #FF4081;
+            --gradient-1: #6C63FF;
+            --gradient-2: #4CAF50;
+        }
+        
+        /* Animated Background */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Animation for Cards */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .process-card {
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--gradient-1);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Animated dots background */
+        .dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            animation: moveDot 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes moveDot {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        /* Section Headers Animation */
+        .section-header {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
+            animation: expandWidth 2s ease-out forwards;
+        }
+
+        @keyframes expandWidth {
+            to { width: 100%; }
+        }
+
+        /* Card hover effects */
+        .card {
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Social links animation */
+        .social-links a {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: rotate(360deg);
+            color: var(--accent-color);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--gradient-1), var(--gradient-2));
+            border-radius: 5px;
+        }
+
+        /* Progress bars animation */
+        .progress-bar {
+            background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
+            animation: fillBar 2s ease-out forwards;
+        }
+
+        
+
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#process">Process</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Animated Dots -->
+    <section id="home" class="hero-section">
+        <div class="dots">
+            <!-- Dots will be added via JavaScript -->
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 hero-content">
+                    <h1 class="display-4 fw-bold mb-4" style="background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                       Md Jahurul Islam Reday
+                    </h1>
+                    <h2 class="display-6 mb-4">Quality Assurance Engineer</h2>
+                    <p class="lead mb-4">Aspiring SQA professional specializing in Manual and Automation Testing</p>
+                    <a href="#contact" class="btn btn-primary btn-lg">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-6 col-md-4 mx-auto">
+                    <img src="pic.jpeg" alt="About me" class="img-fluid rounded-circle shadow animate-float">
+
+                </div>
+                
+                <div class="col-lg-6">
+                    <p class="lead">A dedicated Computer Science and Engineering student at Green University of Bangladesh, focused on building a career in Software Quality Assurance.</p>
+                    <p>Currently learning both manual and automation testing methodologies to ensure software quality and reliability. My goal is to contribute to developing high-quality software products through comprehensive testing strategies and continuous quality improvement.</p>
+                    <div class="mt-4">
+                        <a href="https://github.com/reday321" class="btn btn-outline-primary me-3" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/reday321" class="btn btn-outline-primary" target="_blank">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div id="skills" class="section section-padding">
+        <div class="container">
+          <h2 class="text-center mb-5">Testing Skills & Tools</h2>
+          
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card skill-card h-100 shadow-sm">
+                <div class="card-body">
+                  <h4 class="text-center mb-4">Manual Testing</h4>
+                  <ul>
+                    <li>Basic Test Case Writing</li>
+                    <li>Test Execution</li>
+                    <li>Basic Bug Reporting</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-md-4">
+              <div class="card skill-card h-100 shadow-sm">
+                <div class="card-body">
+                  <h4 class="text-center mb-4">Learning Automation</h4>
+                  <ul>
+                    <li>Basic Programming Concepts</li>
+                    <li>Introduction to Test Automation</li>
+                    <li>Automation Fundamentals</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-md-4">
+              <div class="card skill-card h-100 shadow-sm">
+                <div class="card-body">
+                  <h4 class="text-center mb-4">Tools</h4>
+                  <ul>
+                    <li>Basic Postman API Testing</li>
+                    <li>Basic Git & GitHub</li>
+                    <li>Learning Bug Tracking Tools</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+
+    <!-- Education Section -->
+    <section id="education" class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5">Education</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="timeline">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Bachelor of Science (B.Sc.) in Computer Science & Engineering</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Green University of Bangladesh</h6>
+                                <p class="card-text">Feb 2022 - Jan 2026</p>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Higher Secondary Certificate (HSC) in Science</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Hazi Jashim Uddin Degree College</h6>
+                                <p class="card-text">2018 - 2020</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Secondary School Certificate (SSC) in Science</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Dublia High School</h6>
+                                <p class="card-text">2012 - 2018</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Certifications</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-certificate text-primary me-2"></i>
+                                Postman API Fundamentals Student Expert Certification
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-certificate text-primary me-2"></i>
+                                Git and GitHub: Beginner to Expert (Udemy)
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="contact-info mb-4">
+                                <p><i class="fas fa-envelope"></i> reday.gub@gmail.com</p>
+                                <p><i class="fas fa-phone"></i> +880 1767-367869</p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
+                            </div>
+                            <div class="social-links text-center">
+                                <a href="https://github.com/reday321" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/reday321" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light text-center py-4">
+        <p class="mb-0">&copy; 2024 Reday. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Create animated dots background
+        function createDots() {
+            const dotsContainer = document.querySelector('.dots');
+            const colors = ['#6C63FF', '#4CAF50', '#FF4081', '#2196F3'];
+            
+            for (let i = 0; i < 50; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.style.width = Math.random() * 20 + 'px';
+                dot.style.height = dot.style.width;
+                dot.style.left = Math.random() * 100 + 'vw';
+                dot.style.top = Math.random() * 100 + 'vh';
+                dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+                dot.style.animationDelay = Math.random() * 20 + 's';
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            createDots();
+        });
+    </script>
+</body>
+</html>
