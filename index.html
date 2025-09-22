@@ -6,436 +6,9 @@
     <title>Reday - QA Engineer Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2D3436;
-            --secondary-color: #00B894;
-            --accent-color: #6C5CE7;
-            --gradient-1: #00B894;
-            --gradient-2: #6C5CE7;
-            --surface-color: rgba(255, 255, 255, 0.1);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Animated Background */
-        .animated-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(-45deg, var(--gradient-1), var(--accent-color), var(--gradient-2));
-            background-size: 400% 400%;
-            animation: gradient 20s ease infinite;
-            opacity: 0.15;
-            filter: blur(100px);
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating Animation for Cards */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, rgba(0, 184, 148, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            animation: fadeIn 1s ease-out;
-            z-index: 1;
-        }
-
-        .hero-text-wrapper {
-            position: relative;
-            z-index: 2;
-        }
-
-        .typing-text {
-            border-right: 3px solid var(--accent-color);
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-color) }
-        }
-
-        .text-gradient {
-            background-size: 200% auto;
-            animation: textGradient 5s linear infinite;
-        }
-
-        @keyframes textGradient {
-            0% { background-position: 0% 50% }
-            50% { background-position: 100% 50% }
-            100% { background-position: 0% 50% }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .skill-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--accent-color);
-            background: var(--surface-color);
-        }
-
-        .skill-list {
-            margin-top: 1.5rem;
-        }
-
-        .skill-item {
-            transition: all 0.3s ease;
-            padding: 0.5rem;
-            border-radius: 8px;
-        }
-
-        .skill-item:hover {
-            background: var(--surface-color);
-            transform: translateX(5px);
-        }
-
-        .skill-item i {
-            transition: transform 0.3s ease;
-        }
-
-        .skill-item:hover i {
-            transform: scale(1.2);
-        }
-
-        .process-card {
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .process-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .navbar {
-            background: var(--glass-bg) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-nav .nav-link {
-            color: var(--primary-color);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            margin: 0 0.2rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: var(--accent-color);
-            background: var(--surface-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background-image: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
-            border: none;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Animated dots background */
-        .dots {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .dot {
-            position: absolute;
-            border-radius: 50%;
-            animation: moveDot 20s linear infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes moveDot {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-            }
-        }
-
-        /* Section Headers Animation */
-        .section-header {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
-            animation: expandWidth 2s ease-out forwards;
-        }
-
-        @keyframes expandWidth {
-            to { width: 100%; }
-        }
-
-        /* Card hover effects */
-        .card {
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: scale(1.02);
-        }
-
-        /* Social links animation */
-        .social-links a {
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .social-links a:hover {
-            transform: rotate(360deg);
-            color: var(--accent-color);
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--gradient-1), var(--gradient-2));
-            border-radius: 5px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 991.98px) {
-            .hero-content {
-                text-align: center;
-                padding: 2rem 0;
-            }
-
-            .hero-content .d-flex {
-                justify-content: center;
-            }
-
-            .display-3 {
-                font-size: calc(2rem + 2vw);
-            }
-
-            .display-6 {
-                font-size: calc(1.2rem + 1vw);
-            }
-
-            .lead {
-                font-size: calc(1rem + 0.5vw);
-            }
-        }
-
-        @media (max-width: 767.98px) {
-            .skill-card {
-                margin-bottom: 1.5rem;
-            }
-
-            .section-padding {
-                padding: 4rem 0;
-            }
-
-            .navbar {
-                padding: 1rem 0;
-            }
-
-            .navbar-nav {
-                padding: 1rem 0;
-            }
-
-            .navbar-nav .nav-link {
-                padding: 0.5rem 1rem;
-                text-align: center;
-            }
-
-            .hero-section {
-                min-height: auto;
-                padding: 6rem 0;
-            }
-        }
-
-        /* Education Section Styles */
-        .education-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .education-card::before {
-            content: '';
-            position: absolute;
-            left: 2.5rem;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--gradient-1), var(--gradient-2));
-            opacity: 0.3;
-        }
-
-        .education-card:hover {
-            transform: translateX(10px);
-            border-color: var(--accent-color);
-        }
-
-        .education-icon {
-            position: relative;
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--surface-color);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .education-details {
-            padding: 1rem;
-            background: var(--surface-color);
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-
-        /* Project Cards Styles */
-        .project-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
-        }
-
-        .project-type .badge {
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .project-highlights {
-            background: var(--surface-color);
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-        }
-
-        .project-card .btn-outline-primary {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-            transition: all 0.3s ease;
-        }
-
-        .project-card .btn-outline-primary:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 575.98px) {
-            .btn-lg {
-                padding: 0.5rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .social-links a {
-                margin: 0 0.5rem;
-            }
-
-            .contact-info p {
-                font-size: 0.9rem;
-            }
-
-            .project-card {
-                margin-bottom: 1.5rem;
-            }
-        }
-
-        /* Progress bars animation */
-        .progress-bar {
-            background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
-            animation: fillBar 2s ease-out forwards;
-        }
-
-        
-
-        @keyframes fillBar {
-            from { width: 0; }
-        }
-    </style>
+    <!-- AOS Animation CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Animated Background -->
@@ -444,28 +17,31 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand fw-bold text-gradient" href="#home" aria-label="Homepage" style="font-size:1.5rem; background: linear-gradient(45deg, var(--secondary-color), var(--accent-color)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing:2px;">
+                <i class="fas fa-bug me-2" aria-hidden="true"></i>Reday QA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                <ul class="navbar-nav ms-auto align-items-center" role="menubar">
+                    <li class="nav-item mx-1" role="none">
+                        <a class="nav-link px-3 py-2 rounded-pill" href="#home" role="menuitem" tabindex="0" aria-label="Home"><i class="fas fa-home me-1" aria-hidden="true"></i>Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                    <li class="nav-item mx-1" role="none">
+                        <a class="nav-link px-3 py-2 rounded-pill" href="#about" role="menuitem" tabindex="0" aria-label="About"><i class="fas fa-user me-1" aria-hidden="true"></i>About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
+                    <li class="nav-item mx-1" role="none">
+                        <a class="nav-link px-3 py-2 rounded-pill" href="#skills" role="menuitem" tabindex="0" aria-label="Skills"><i class="fas fa-laptop-code me-1" aria-hidden="true"></i>Skills</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#education">Education</a>
+                    <li class="nav-item mx-1" role="none">
+                        <a class="nav-link px-3 py-2 rounded-pill" href="#education" role="menuitem" tabindex="0" aria-label="Education"><i class="fas fa-graduation-cap me-1" aria-hidden="true"></i>Education</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                    <li class="nav-item mx-1" role="none">
+                        <a class="nav-link px-3 py-2 rounded-pill" href="#projects" role="menuitem" tabindex="0" aria-label="Projects"><i class="fas fa-code-branch me-1" aria-hidden="true"></i>Projects</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                    <li class="nav-item mx-1" role="none">
+                        <a class="nav-link px-3 py-2 rounded-pill" href="#contact" role="menuitem" tabindex="0" aria-label="Contact"><i class="fas fa-envelope me-1" aria-hidden="true"></i>Contact</a>
                     </li>
                 </ul>
             </div>
@@ -474,62 +50,130 @@
 
     <!-- Hero Section with Modern Design -->
     <section id="home" class="hero-section">
-        <div class="dots">
-            <!-- Dots will be added via JavaScript -->
-        </div>
+        <div class="dots"></div>
         <div class="container">
             <div class="row align-items-center min-vh-100">
-                <div class="col-lg-8 hero-content position-relative">
+                <div class="col-lg-7 hero-content position-relative">
                     <div class="hero-text-wrapper">
-                        <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px);">
-                            <i class="fas fa-code-branch me-2"></i>Available for Projects
+                        <span class="badge bg-light text-dark mb-3 p-2 px-3 shadow" style="backdrop-filter: blur(10px); font-size:1.1rem;">
+                            <i class="fas fa-bolt me-2 text-warning"></i>Open to Exciting Projects
                         </span>
-                        <h1 class="display-3 fw-bold mb-4 text-gradient" style="background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        <h1 class="display-3 fw-bold mb-2 text-gradient" style="background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing:1px;">
                             Md Jahurul Islam Reday
                         </h1>
                         <h2 class="display-6 mb-4 text-gradient-subtle" style="background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                            Quality Assurance Engineer
+                            <span id="dynamic-role">Quality Assurance Engineer</span>
                         </h2>
-                        <p class="lead mb-5 typing-text">Aspiring SQA professional specializing in Manual and Automation Testing</p>
-                        <div class="d-flex gap-3">
-                            <a href="#contact" class="btn btn-primary btn-lg px-4 py-3">
-                                Get In Touch
-                                <i class="fas fa-arrow-right ms-2"></i>
+                        <p class="lead mb-4" id="dynamic-intro">
+                            <span class="d-inline-block"><i class="fas fa-magic me-2 text-accent"></i>Passionate about building <span class="fw-bold text-primary">bug-free</span> digital experiences.</span>
+                        </p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="#contact" class="btn btn-primary btn-lg px-4 py-3 shadow-lg animate__animated animate__pulse animate__infinite">
+                                <i class="fas fa-paper-plane me-2"></i>Let's Collaborate
                             </a>
                             <a href="#about" class="btn btn-outline-primary btn-lg px-4 py-3">
-                                About Me
+                                <i class="fas fa-user me-2"></i>More About Me
                             </a>
+                            <a href="#skills" class="btn btn-outline-success btn-lg px-4 py-3">
+                                <i class="fas fa-brain me-2"></i>See My Skills
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <span class="me-3"><i class="fas fa-robot text-info"></i> AI Tools: ChatGPT, Grok, Claude, DeepSeek</span>
+                            <span class="me-3"><i class="fas fa-vial text-primary"></i> Selenium, Postman</span>
+                            <span><i class="fas fa-code-branch text-warning"></i> Git, Jenkins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex justify-content-center align-items-center mb-5 mb-lg-0">
+                    <div class="position-relative" style="max-width:320px; width:100%;">
+                        <div class="image-frame" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 2px solid var(--glass-border); border-radius: 50%; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.10);">
+                            <img src="pic.jpg" alt="Jahurul Islam Reday" class="img-fluid rounded-circle shadow" style="width:100%; max-width:280px; aspect-ratio:1/1; object-fit:cover;">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+        // Dynamic role animation
+        const roles = [
+            'Quality Assurance Engineer',
+            'Automation Enthusiast',
+            'AI-Powered Tester',
+            'Bug Hunter',
+            'SQA Innovator'
+        ];
+        let roleIdx = 0;
+        setInterval(() => {
+            document.getElementById('dynamic-role').textContent = roles[roleIdx];
+            roleIdx = (roleIdx + 1) % roles.length;
+        }, 2200);
+        // Dynamic intro animation
+        const intros = [
+            'Passionate about building <span class="fw-bold text-primary">bug-free</span> digital experiences.',
+            'Driven by curiosity and <span class="fw-bold text-success">automation</span>.',
+            'Turning requirements into <span class="fw-bold text-accent">quality software</span>.',
+            'Empowering teams with <span class="fw-bold text-info">AI tools</span>.',
+            'Let’s make software <span class="fw-bold text-warning">better together</span>!'
+        ];
+        let introIdx = 0;
+        setInterval(() => {
+            document.getElementById('dynamic-intro').innerHTML = `<span class="d-inline-block"><i class="fas fa-magic me-2 text-accent"></i>${intros[introIdx]}</span>`;
+            introIdx = (introIdx + 1) % intros.length;
+        }, 3200);
+        </script>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section-padding">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px);">
+                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px); font-size:1.1rem;">
                     <i class="fas fa-user me-2"></i>About Me
                 </span>
                 <h2 class="display-5 fw-bold mb-3">Who I Am</h2>
-                <p class="lead text-muted">Passionate about ensuring software quality</p>
+                <p class="lead text-muted">Passionate about quality, driven by curiosity, and always learning.</p>
             </div>
-            <div class="row align-items-center">
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <div class="position-relative">
-                        <div class="image-frame" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px;">
-                            <img src="pic.jpg" alt="About me" class="img-fluid rounded-circle shadow animate-float" style="transform: scale(0.95);">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 d-flex justify-content-center">
+                    <div class="position-relative" style="max-width:320px; width:100%;">
+                        <div class="image-frame" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 2px solid var(--glass-border); border-radius: 2rem; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.10);">
+                            <img src="pic.jpg" alt="Jahurul Islam Reday" class="img-fluid rounded-4 shadow" style="width:100%; max-width:280px; aspect-ratio:1/1; object-fit:cover;">
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-8">
-                    <div class="card" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--gradient-2) 100%); backdrop-filter: blur(12px); border-radius: 2rem;">
                         <div class="card-body p-4">
-                            <p class="lead mb-4">A dedicated Computer Science and Engineering student at Green University of Bangladesh, focused on building a career in Software Quality Assurance.</p>
-                            <p class="mb-4">Currently learning both manual and automation testing methodologies to ensure software quality and reliability. My goal is to contribute to developing high-quality software products through comprehensive testing strategies and continuous quality improvement.</p>
+                            <h3 class="fw-bold mb-3" style="letter-spacing:1px;">Hi, I'm Jahurul Islam Reday!</h3>
+                            <ul class="timeline list-unstyled mb-4">
+                                <li class="mb-3 d-flex align-items-start">
+                                    <span class="me-3"><i class="fas fa-graduation-cap text-primary"></i></span>
+                                    <span>CS&E student at <strong>Green University of Bangladesh</strong></span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start">
+                                    <span class="me-3"><i class="fas fa-bug text-danger"></i></span>
+                                    <span>QA enthusiast with a love for <strong>automation & AI</strong></span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start">
+                                    <span class="me-3"><i class="fas fa-lightbulb text-warning"></i></span>
+                                    <span>Always exploring new tech and creative solutions</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start">
+                                    <span class="me-3"><i class="fas fa-users text-success"></i></span>
+                                    <span>Team player, strong communicator, and lifelong learner</span>
+                                </li>
+                            </ul>
+                            <div class="mb-4">
+                                <span class="badge bg-success me-2 mb-2">Manual & Automation Testing</span>
+                                <span class="badge bg-info text-dark me-2 mb-2">AI Tools</span>
+                                <span class="badge bg-warning text-dark me-2 mb-2">API & Web Testing</span>
+                                <span class="badge bg-primary me-2 mb-2">Continuous Learning</span>
+                            </div>
+                            <div class="mb-4">
+                                <p class="mb-2"><i class="fas fa-quote-left text-accent me-2"></i><em>"Quality is not an act, it is a habit."</em></p>
+                                <p class="mb-0">I believe in making software better, one test at a time. Let's connect and build something amazing together!</p>
+                            </div>
                             <div class="d-flex gap-3">
                                 <a href="https://github.com/reday321" class="btn btn-outline-primary" target="_blank">
                                     <i class="fab fa-github me-2"></i> GitHub
@@ -537,6 +181,28 @@
                                 <a href="https://www.linkedin.com/in/reday321" class="btn btn-outline-primary" target="_blank">
                                     <i class="fab fa-linkedin me-2"></i> LinkedIn
                                 </a>
+                            </div>
+                            <div class="mt-4">
+                                <a href="Jahurul Islam reday.pdf" class="btn btn-lg px-4 py-3 fw-bold shadow resume-btn" style="color: #fff; background: linear-gradient(90deg, var(--gradient-1), var(--accent-color)); border: none; position: relative; overflow: hidden;" download aria-label="Download my resume">
+                                    <span class="resume-icon-wrapper" style="display:inline-block; animation: bounceResume 1.2s infinite alternate;">
+                                        <i class="fas fa-download me-2"></i>
+                                    </span>
+                                    Download My Resume
+                                </a>
+                                <style>
+                                @keyframes bounceResume {
+                                    0% { transform: translateY(0); }
+                                    100% { transform: translateY(-8px); }
+                                }
+                                .resume-btn:hover, .resume-btn:focus {
+                                    box-shadow: 0 0 16px 4px var(--accent-color), 0 4px 32px rgba(0,0,0,0.15);
+                                    filter: brightness(1.1) saturate(1.2);
+                                    outline: none;
+                                }
+                                .resume-btn:active {
+                                    filter: brightness(0.95);
+                                }
+                                </style>
                             </div>
                         </div>
                     </div>
@@ -548,101 +214,56 @@
     <div id="skills" class="section section-padding">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px);">
+                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px); font-size:1.1rem;">
                     <i class="fas fa-laptop-code me-2"></i>Technical Skills
                 </span>
-                <h2 class="display-5 fw-bold mb-3">My Expertise</h2>
-                <p class="lead text-muted">Comprehensive skill set in software testing and quality assurance</p>
+                <h2 class="display-5 fw-bold mb-3" style="letter-spacing:1px;">Modern QA Skillset</h2>
+                <p class="lead text-muted">My real-world expertise in software quality assurance</p>
             </div>
-          
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card skill-card h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-4">
-                                <i class="fas fa-clipboard-check fa-2x me-3" style="color: var(--secondary-color)"></i>
-                                <h4 class="card-title mb-0">Manual Testing</h4>
-                            </div>
-                            <div class="skill-list">
-                                <div class="skill-item mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Basic Test Case Writing</span>
-                                    </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-lg border-0" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--gradient-2) 100%); backdrop-filter: blur(12px); border-radius: 2rem;">
+                        <div class="card-body p-5">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-4 d-flex align-items-start">
+                                            <span class="me-3"><i class="fas fa-brain fa-lg text-info"></i></span>
+                                            <span><strong>AI Tools:</strong> ChatGPT, Grok, Claude, DeepSeek</span>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-start">
+                                            <span class="me-3"><i class="fas fa-vial fa-lg text-primary"></i></span>
+                                            <span><strong>Testing Tools:</strong> Selenium WebDriver, Postman, JUnit</span>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-start">
+                                            <span class="me-3"><i class="fas fa-code fa-lg text-success"></i></span>
+                                            <span><strong>Languages:</strong> Java, SQL</span>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-start">
+                                            <span class="me-3"><i class="fas fa-robot fa-lg text-info"></i></span>
+                                            <span><strong>Automation & Frameworks:</strong> Appium</span>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-start">
+                                            <span class="me-3"><i class="fas fa-code-branch fa-lg text-warning"></i></span>
+                                            <span><strong>CI/CD:</strong> Git, GitHub, Jenkins</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="skill-item mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Test Execution</span>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Basic Bug Reporting</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-      
-                <div class="col-md-4">
-                    <div class="card skill-card h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-4">
-                                <i class="fas fa-robot fa-2x me-3" style="color: var(--secondary-color)"></i>
-                                <h4 class="card-title mb-0">Learning Automation</h4>
-                            </div>
-                            <div class="skill-list">
-                                <div class="skill-item mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Basic Programming Concepts</span>
-                                    </div>
-                                </div>
-                                <div class="skill-item mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Introduction to Test Automation</span>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Automation Fundamentals</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-      
-                <div class="col-md-4">
-                    <div class="card skill-card h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-4">
-                                <i class="fas fa-tools fa-2x me-3" style="color: var(--secondary-color)"></i>
-                                <h4 class="card-title mb-0">Tools</h4>
-                            </div>
-                            <div class="skill-list">
-                                <div class="skill-item mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Basic Postman API Testing</span>
-                                    </div>
-                                </div>
-                                <div class="skill-item mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Basic Git & GitHub</span>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                        <span>Learning Bug Tracking Tools</span>
-                                    </div>
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-4 d-flex align-items-start">
+                                            <span class="me-3"><i class="fas fa-tasks fa-lg text-danger"></i></span>
+                                            <span><strong>Testing Types:</strong> Manual Testing, Automation Testing, API Testing, Performance Testing (JMeter)</span>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-start">
+                                            <span class="me-3"><i class="fas fa-project-diagram fa-lg text-secondary"></i></span>
+                                            <span><strong>Methodologies:</strong> Agile (Scrum), Waterfall</span>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-start">
+                                            <span class="me-3"><i class="fas fa-users fa-lg text-primary"></i></span>
+                                            <span><strong>Soft Skills:</strong> Analytical Thinking, Strong Communication, Team Collaboration</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -658,20 +279,20 @@
     <section id="education" class="section-padding">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px);">
+                <span class="badge bg-dark text-light mb-3 p-2 px-3" style="backdrop-filter: blur(10px); font-size:1.1rem;">
                     <i class="fas fa-graduation-cap me-2"></i>Education
                 </span>
                 <h2 class="display-5 fw-bold mb-3">Academic Journey</h2>
                 <p class="lead text-muted">My educational background and qualifications</p>
             </div>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="timeline position-relative">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="timeline position-relative" style="border-left: 4px solid var(--accent-color); padding-left: 2rem;">
                         <!-- University Education -->
-                        <div class="card education-card mb-4" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
+                        <div class="card education-card mb-5 shadow-lg border-0 position-relative" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--gradient-2) 100%); border-radius: 1.5rem;">
                             <div class="card-body p-4">
                                 <div class="d-flex align-items-center mb-3">
-                                    <div class="education-icon me-4">
+                                    <div class="education-icon me-4" style="background: var(--surface-color);">
                                         <i class="fas fa-university fa-2x" style="color: var(--accent-color)"></i>
                                     </div>
                                     <div>
@@ -682,7 +303,7 @@
                                 <div class="ms-5 ps-3">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <span class="fw-bold text-primary">Green University of Bangladesh</span>
-                                        <span class="badge" style="background: var(--gradient-1);">2022 - 2026</span>
+                                        <span class="badge bg-success">2022 - 2026</span>
                                     </div>
                                     <div class="education-details">
                                         <div class="d-flex align-items-center mb-2">
@@ -696,13 +317,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <span class="position-absolute top-0 start-0 translate-middle-y" style="left:-2.2rem; top:2.5rem;">
+                                <i class="fas fa-circle fa-lg" style="color: var(--accent-color);"></i>
+                            </span>
                         </div>
-
                         <!-- HSC Education -->
-                        <div class="card education-card mb-4" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
+                        <div class="card education-card mb-5 shadow-lg border-0 position-relative" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--gradient-1) 100%); border-radius: 1.5rem;">
                             <div class="card-body p-4">
                                 <div class="d-flex align-items-center mb-3">
-                                    <div class="education-icon me-4">
+                                    <div class="education-icon me-4" style="background: var(--surface-color);">
                                         <i class="fas fa-school fa-2x" style="color: var(--secondary-color)"></i>
                                     </div>
                                     <div>
@@ -713,17 +336,19 @@
                                 <div class="ms-5 ps-3">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="fw-bold text-primary">Hazi Jashim Uddin Degree College</span>
-                                        <span class="badge" style="background: var(--gradient-2);">2018 - 2020</span>
+                                        <span class="badge bg-info text-dark">2018 - 2020</span>
                                     </div>
                                 </div>
                             </div>
+                            <span class="position-absolute top-0 start-0 translate-middle-y" style="left:-2.2rem; top:2.5rem;">
+                                <i class="fas fa-circle fa-lg" style="color: var(--secondary-color);"></i>
+                            </span>
                         </div>
-
                         <!-- SSC Education -->
-                        <div class="card education-card" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
+                        <div class="card education-card shadow-lg border-0 position-relative" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--accent-color) 100%); border-radius: 1.5rem;">
                             <div class="card-body p-4">
                                 <div class="d-flex align-items-center mb-3">
-                                    <div class="education-icon me-4">
+                                    <div class="education-icon me-4" style="background: var(--surface-color);">
                                         <i class="fas fa-graduation-cap fa-2x" style="color: var(--gradient-1)"></i>
                                     </div>
                                     <div>
@@ -734,10 +359,13 @@
                                 <div class="ms-5 ps-3">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="fw-bold text-primary">Dublia High School</span>
-                                        <span class="badge" style="background: var(--accent-color);">2012 - 2018</span>
+                                        <span class="badge bg-warning text-dark">2012 - 2018</span>
                                     </div>
                                 </div>
                             </div>
+                            <span class="position-absolute top-0 start-0 translate-middle-y" style="left:-2.2rem; top:2.5rem;">
+                                <i class="fas fa-circle fa-lg" style="color: var(--accent-color);"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -747,59 +375,51 @@
 
     <!-- Certifications Section -->
     <section class="section-padding bg-light">
-        <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="text-center mb-5">
-                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px);">
+                <span class="badge bg-dark text-light mb-3 p-2 px-3" style="backdrop-filter: blur(10px); font-size:1.1rem;">
                     <i class="fas fa-award me-2"></i>Achievements
                 </span>
                 <h2 class="display-5 fw-bold mb-3">Certifications</h2>
                 <p class="lead text-muted">Professional certifications and accomplishments</p>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card mb-4" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-certificate fa-2x me-3" style="color: var(--accent-color)"></i>
-                                <div>
-                                    <h5 class="card-title mb-1">Full Stack SQA and Software Test Automation — Road to SDET</h5>
-                                    <p class="text-muted mb-0">Certificate ID: MJIR92943</p>
-                                </div>
-                            </div>
-                            <div class="ms-5">
-                                <p class="mb-0">Completed 70+ hours of practical, hands-on training covering:</p>
-                                <div class="mt-2">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--secondary-color)"></i>
-                                        <span>Comprehensive Test Automation</span>
-                                    </div>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--secondary-color)"></i>
-                                        <span>API & Web Testing</span>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--secondary-color)"></i>
-                                        <span>Mobile Application Testing</span>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card shadow-lg border-0 text-center p-4 h-100" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--accent-color) 100%); border-radius: 1.5rem;">
+                        <div class="mb-3">
+                            <i class="fas fa-certificate fa-3x mb-2" style="color: var(--accent-color)"></i>
                         </div>
+                        <h5 class="fw-bold mb-1">Full Stack SQA & Test Automation</h5>
+                        <div class="mb-2 text-muted small">Certificate ID: MJIR92943</div>
+                        <div class="mb-3">
+                            <span class="badge bg-success mb-1">70+ Hours</span>
+                        </div>
+                        <ul class="list-unstyled mb-3">
+                            <li><i class="fas fa-check-circle me-2 text-success"></i>Comprehensive Test Automation</li>
+                            <li><i class="fas fa-check-circle me-2 text-success"></i>API & Web Testing</li>
+                            <li><i class="fas fa-check-circle me-2 text-success"></i>Mobile Application Testing</li>
+                        </ul>
+                        <span class="badge bg-dark text-light">Road to SDET</span>
                     </div>
-                    <div class="card mb-4" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-certificate fa-2x me-3" style="color: var(--accent-color)"></i>
-                                <h5 class="card-title mb-0">Postman API Fundamentals Student Expert Certification</h5>
-                            </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card shadow-lg border-0 text-center p-4 h-100" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--gradient-2) 100%); border-radius: 1.5rem;">
+                        <div class="mb-3">
+                            <i class="fas fa-certificate fa-3x mb-2" style="color: var(--accent-color)"></i>
                         </div>
+                        <h5 class="fw-bold mb-1">Postman API Fundamentals</h5>
+                        <div class="mb-2 text-muted small">Student Expert Certification</div>
+                        <span class="badge bg-info text-dark">API Testing</span>
                     </div>
-                    <div class="card" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-certificate fa-2x me-3" style="color: var(--accent-color)"></i>
-                                <h5 class="card-title mb-0">Git and GitHub: Beginner to Expert (Udemy)</h5>
-                            </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card shadow-lg border-0 text-center p-4 h-100" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--secondary-color) 100%); border-radius: 1.5rem;">
+                        <div class="mb-3">
+                            <i class="fas fa-certificate fa-3x mb-2" style="color: var(--accent-color)"></i>
                         </div>
+                        <h5 class="fw-bold mb-1">Git and GitHub</h5>
+                        <div class="mb-2 text-muted small">Beginner to Expert (Udemy)</div>
+                        <span class="badge bg-primary">Version Control</span>
                     </div>
                 </div>
             </div>
@@ -808,100 +428,73 @@
 
     <!-- Projects Section -->
     <section id="projects" class="section-padding">
-        <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="text-center mb-5">
-                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px);">
-                    <i class="fas fa-code-branch me-2"></i>Projects
+                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px); font-size:1.1rem;">
+                    <i class="fas fa-code-branch me-2"></i>Featured Projects
                 </span>
                 <h2 class="display-5 fw-bold mb-3">My Recent Work</h2>
-                <p class="lead text-muted">Showcasing my testing projects and contributions</p>
+                <p class="lead text-muted">A showcase of my favorite testing and automation projects, with real-world impact and modern tools.</p>
             </div>
-
-            <div class="row g-4">
-                <!-- Project 1 -->
-                <div class="col-md-6">
-                    <div class="card project-card h-100" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
-                        <div class="card-body p-4">
-                            <div class="project-type mb-2">
-                                <span class="badge" style="background: var(--secondary-color);">API Automation</span>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card project-card shadow-lg border-0 h-100" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--gradient-2) 100%); border-radius: 2rem;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <div class="d-flex flex-wrap align-items-center mb-3">
+                                <span class="badge bg-success me-2 mb-2">API Automation</span>
+                                <span class="badge bg-primary me-2 mb-2">Postman</span>
+                                <span class="badge bg-info text-dark me-2 mb-2">E-commerce</span>
                             </div>
-                            <h4 class="card-title mb-3">API Automation Testing using Postman</h4>
-                            <p class="card-text mb-4">Designed and executed API automation tests for a sample e-commerce platform using Postman, ensuring accurate response validation and robust error handling.</p>
-                            <div class="project-highlights mb-4">
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>Response Validation</span>
-                                </div>
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>Status Code Checks</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>Error Handling</span>
-                                </div>
-                            </div>
-                            <a href="https://github.com/reday321/api-automation" class="btn btn-outline-primary" target="_blank">
+                            <h4 class="card-title mb-2"><i class="fas fa-robot me-2 text-accent"></i>API Automation Testing using Postman</h4>
+                            <p class="card-text mb-3">Designed and executed API automation tests for a sample e-commerce platform using Postman, ensuring accurate response validation and robust error handling.</p>
+                            <ul class="mb-4">
+                                <li>✔️ Response Validation</li>
+                                <li>✔️ Status Code Checks</li>
+                                <li>✔️ Error Handling</li>
+                            </ul>
+                            <a href="https://github.com/reday321/PostMan" class="btn btn-primary btn-lg mt-auto w-100" target="_blank" aria-label="View API Automation Project on GitHub">
                                 <i class="fab fa-github me-2"></i>View Project
                             </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="col-md-6">
-                    <div class="card project-card h-100" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
-                        <div class="card-body p-4">
-                            <div class="project-type mb-2">
-                                <span class="badge" style="background: var(--accent-color);">Web Automation</span>
+                <div class="col" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card project-card shadow-lg border-0 h-100" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--gradient-1) 100%); border-radius: 2rem;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <div class="d-flex flex-wrap align-items-center mb-3">
+                                <span class="badge bg-warning text-dark me-2 mb-2">Web Automation</span>
+                                <span class="badge bg-primary me-2 mb-2">JUnit</span>
+                                <span class="badge bg-info text-dark me-2 mb-2">Digital Unite</span>
                             </div>
-                            <h4 class="card-title mb-3">Web Automation with JUnit</h4>
-                            <p class="card-text mb-4">Developed an automated web testing solution using Java and JUnit to validate form submissions on the Digital Unite platform.</p>
-                            <div class="project-highlights mb-4">
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>File Upload Testing</span>
-                                </div>
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>Form Field Validation</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>Success Message Assertions</span>
-                                </div>
-                            </div>
-                            <a href="https://github.com/reday321/web-automation-junit" class="btn btn-outline-primary" target="_blank">
+                            <h4 class="card-title mb-2"><i class="fas fa-globe me-2 text-accent"></i>Web Automation with JUnit</h4>
+                            <p class="card-text mb-3">Developed an automated web testing solution using Java and JUnit to validate form submissions on the Digital Unite platform.</p>
+                            <ul class="mb-4">
+                                <li>✔️ File Upload Testing</li>
+                                <li>✔️ Form Field Validation</li>
+                                <li>✔️ Success Message Assertions</li>
+                            </ul>
+                            <a href="https://github.com/reday321/Junit_Assignment-1" class="btn btn-primary btn-lg mt-auto w-100" target="_blank" aria-label="View Web Automation Project on GitHub">
                                 <i class="fab fa-github me-2"></i>View Project
                             </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 3 -->
-                <div class="col-md-6">
-                    <div class="card project-card h-100" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
-                        <div class="card-body p-4">
-                            <div class="project-type mb-2">
-                                <span class="badge" style="background: var(--gradient-1);">Mobile Automation</span>
+                <div class="col" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card project-card shadow-lg border-0 h-100" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--accent-color) 100%); border-radius: 2rem;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <div class="d-flex flex-wrap align-items-center mb-3">
+                                <span class="badge bg-info text-dark me-2 mb-2">Mobile Automation</span>
+                                <span class="badge bg-success me-2 mb-2">Appium</span>
+                                <span class="badge bg-primary me-2 mb-2">Android</span>
                             </div>
-                            <h4 class="card-title mb-3">Calculator Automation (Android)</h4>
-                            <p class="card-text mb-4">Implemented mobile test automation for Android Calculator app using Appium and Java with data-driven testing through CSV integration.</p>
-                            <div class="project-highlights mb-4">
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>Appium Integration</span>
-                                </div>
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>Data-Driven Testing</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-check-circle me-2" style="color: var(--accent-color)"></i>
-                                    <span>Multiple Scenario Validation</span>
-                                </div>
-                            </div>
-                            <a href="https://github.com/reday321/calculator-automation" class="btn btn-outline-primary" target="_blank">
+                            <h4 class="card-title mb-2"><i class="fas fa-mobile-alt me-2 text-accent"></i>Calculator Automation (Android)</h4>
+                            <p class="card-text mb-3">Implemented mobile test automation for Android Calculator app using Appium and Java with data-driven testing through CSV integration.</p>
+                            <ul class="mb-4">
+                                <li>✔️ Appium Integration</li>
+                                <li>✔️ Data-Driven Testing</li>
+                                <li>✔️ Multiple Scenario Validation</li>
+                            </ul>
+                            <a href="https://github.com/reday321/Appium-Automation" class="btn btn-primary btn-lg mt-auto w-100" target="_blank" aria-label="View Calculator Automation Project on GitHub">
                                 <i class="fab fa-github me-2"></i>View Project
                             </a>
                         </div>
@@ -915,40 +508,40 @@
     <section id="contact" class="section-padding">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px);">
-                    <i class="fas fa-envelope me-2"></i>Contact
+                <span class="badge bg-light text-dark mb-3 p-2 px-3" style="backdrop-filter: blur(10px); font-size:1.1rem;">
+                    <i class="fas fa-envelope-open-text me-2 text-primary animate__animated animate__bounce"></i>Contact Me
                 </span>
-                <h2 class="display-5 fw-bold mb-3">Get In Touch</h2>
-                <p class="lead text-muted">Let's discuss your project requirements</p>
+                <h2 class="display-5 fw-bold mb-3">Let's Connect!</h2>
+                <p class="lead text-muted">Whether you have a project, want to collaborate, or just want to say hi—I'm always open to new connections.</p>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card" style="background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);">
-                        <div class="card-body p-4">
-                            <div class="contact-info mb-4">
-                                <div class="contact-item d-flex align-items-center mb-3 p-3" style="background: var(--surface-color); border-radius: 10px;">
-                                    <i class="fas fa-envelope me-3" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+            <div class="row justify-content-center align-items-stretch g-4">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="card shadow-lg border-0 h-100" style="background: linear-gradient(120deg, var(--glass-bg) 80%, var(--gradient-2) 100%); backdrop-filter: blur(12px); border-radius: 2rem;">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between h-100">
+                            <div class="mb-4">
+                                <div class="contact-item d-flex align-items-center mb-4 p-3" style="background: var(--surface-color); border-radius: 12px;">
+                                    <i class="fas fa-envelope fa-lg me-3 text-primary animate__animated animate__pulse animate__infinite"></i>
                                     <div>
                                         <h6 class="mb-0">Email</h6>
                                         <p class="mb-0">reday.gub@gmail.com</p>
                                     </div>
                                 </div>
-                                <div class="contact-item d-flex align-items-center mb-3 p-3" style="background: var(--surface-color); border-radius: 10px;">
-                                    <i class="fas fa-phone me-3" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+                                <div class="contact-item d-flex align-items-center mb-4 p-3" style="background: var(--surface-color); border-radius: 12px;">
+                                    <i class="fas fa-phone fa-lg me-3 text-success animate__animated animate__tada animate__infinite"></i>
                                     <div>
                                         <h6 class="mb-0">Phone</h6>
                                         <p class="mb-0">+880 1767-367869</p>
                                     </div>
                                 </div>
-                                <div class="contact-item d-flex align-items-center p-3" style="background: var(--surface-color); border-radius: 10px;">
-                                    <i class="fas fa-map-marker-alt me-3" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+                                <div class="contact-item d-flex align-items-center p-3" style="background: var(--surface-color); border-radius: 12px;">
+                                    <i class="fas fa-map-marker-alt fa-lg me-3 text-danger animate__animated animate__bounceIn"></i>
                                     <div>
                                         <h6 class="mb-0">Location</h6>
                                         <p class="mb-0">Dhaka, Bangladesh</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="social-links text-center mt-4">
+                            <div class="social-links text-center mt-3">
                                 <a href="https://github.com/reday321" target="_blank" class="btn btn-outline-primary mx-2">
                                     <i class="fab fa-github me-2"></i>GitHub
                                 </a>
@@ -964,7 +557,18 @@
     </section>
 
     <footer class="bg-dark text-light text-center py-4">
-        <p class="mb-0">&copy; 2024 Reday. All rights reserved.</p>
+        <div class="container py-2">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                <div class="mb-2 mb-md-0">
+                    <span class="fw-bold" style="letter-spacing:1px;">&copy; 2024 Reday</span> <span class="text-muted">| QA Engineer</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/reday321" target="_blank" class="text-light mx-2" style="font-size:1.3rem;"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/reday321" target="_blank" class="text-light mx-2" style="font-size:1.3rem;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mt-2" style="height:3px; background: linear-gradient(90deg, var(--secondary-color), var(--accent-color)); border-radius:2px;"></div>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
@@ -990,7 +594,16 @@
         // Initialize animations
         document.addEventListener('DOMContentLoaded', function() {
             createDots();
+            if (window.AOS) {
+                AOS.init({
+                    duration: 900,
+                    once: true
+                });
+            }
         });
+    </script>
+    <!-- AOS Animation JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     </script>
 </body>
 </html>
