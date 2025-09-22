@@ -299,6 +299,19 @@
         min-height: auto;
         padding: 6rem 0;
     }
+    /* Reduce animation load on mobile */
+    .animated-background {
+        animation: none !important;
+        filter: blur(60px);
+    }
+    .hero-content, .process-card, .skill-card, .project-card {
+        animation: none !important;
+    }
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }
 
 .education-card {
